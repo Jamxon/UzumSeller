@@ -18,8 +18,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /www/wwwroot/loyiha_papkasi_nomi
+            cd /www/wwwroot/UzumSeller
             git pull origin main
+            export COMPOSER_ALLOW_SUPERUSER=1
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
             php artisan config:cache
